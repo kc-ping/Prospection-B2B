@@ -38,5 +38,6 @@ Le pipeline s'articule autour des étapes clés suivantes :
 ## 📂 Structure du Dépôt
 ```text
 ├── workflow.json              # Le code source exporté du workflow n8n
+├── workflow.png               # Image du workflow n8n
 ├── README.md                  # Documentation du projet
 └── ARCHITECTURE.md            # Spécifications techniques et flux de données
