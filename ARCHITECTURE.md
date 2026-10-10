@@ -1,34 +1,26 @@
-# 🏛️ Architecture Technique — Pipeline de Prospection B2B (DV GROUP)
+flowchart TD
+    A([⏱️ Déclencheur Manuel / Cron]) --> B[🌐 Extraction Apify <br> <i>Google Search Scraper</i>]
+    B --> C{⚖️ Scoring & Qualification <br> Heuristique}
+    C --> D[🧠 Enrichissement <br> <i>Web Fetch & Perplexity AI</i>]
+    D --> E[✍️ Génération de Brouillons <br> <i>LLM</i>]
+    E --> F[(📊 Contrôle d'Historique <br> <i>Google Sheets API</i>)]
+    F --> G{🛡️ Moteur de Dédoublonnage <br> & Filtrage JavaScript}
 
-Ce document décrit l'architecture logicielle, le flux de données (*data pipeline*) et les choix de conception du système d'automatisation n8n.
+    G -- "🛑 Doublons bloqués" --> Z((Rejet))
+    G -- "✅ Nouveaux prospects" --> H[(💾 Upsert <br> Google Sheets)]
+    G -- "✅ Nouveaux prospects" --> I{🎯 Filtrage <br> Priorité A}
+    
+    I -- "Oui" --> J[📧 Alerte Gmail]
+    I -- "Non" --> K((Fin))
 
----
-
-## 1. Vue d'ensemble de l'Architecture
-
-Le système repose sur un pipeline orienté événements et flux de données asynchrones. Il combine des services de web scraping, de recherche augmentée par IA, un filtrage contextuel et une synchronisation transactionnelle avec un CRM (Google Sheets) et un service de messagerie (Gmail).
-
-```text
-[Déclencheur Manuel / Cron]
-       │
-       ▼
-[Extraction Apify (Google Search Scraper)]
-       │
-       ▼
-[Scoring & Qualification Heuristique]
-       │
-       ▼
-[Enrichissement Web Fetch & Perplexity AI]
-       │
-       ▼
-[Génération de Brouillons (LLM)]
-       │
-       ▼
-[Contrôle d'Historique (Google Sheets API)]
-       │
-       ▼
-[Moteur de Dédoublonnage & Filtrage (JavaScript)] ──► (Bloque les doublons)
-       │
-       ├────────────────────────────────────────┐
-       ▼                                        ▼
-[Upsert Google Sheets]            [Filtrage Priorité A] ──► [Alerte Gmail]
+    %% Styles personnalisés pour rendre le schéma professionnel
+    classDef default fill:#f8fafc,stroke:#cbd5e1,stroke-width:2px,color:#0f172a,rx:5px,ry:5px;
+    classDef database fill:#ecfdf5,stroke:#10b981,stroke-width:2px,color:#064e3b;
+    classDef ai fill:#f3e8ff,stroke:#a855f7,stroke-width:2px,color:#3b0764;
+    classDef logic fill:#fff7ed,stroke:#f97316,stroke-width:2px,color:#7c2d12;
+    classDef mail fill:#fef2f2,stroke:#ef4444,stroke-width:2px,color:#7f1d1d;
+    
+    class F,H database;
+    class D,E ai;
+    class C,G,I logic;
+    class J mail;
