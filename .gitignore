@@ -1,0 +1,14 @@
+# Fichiers de configuration et d'environnement n8n
+.n8n/
+node_modules/
+.env
+.env.local
+
+# Fichiers temporaires du système d'exploitation
+.DS_Store
+Thumbs.db
+*.log
+
+# Caches et éditeurs (VS Code)
+.vscode/
+.history/
