@@ -1,4 +1,4 @@
-# 🚀 Pipeline de Veille et Prospection B2B Automatisée (DV GROUP)
+# 🚀 Pipeline de Veille et Prospection B2B Automatisée
 
 > Système intelligent d'extraction de signaux d'affaires industriels, de qualification par IA (Perplexity & LLM) et de synchronisation multi-canal (Google Sheets & Gmail).
 
