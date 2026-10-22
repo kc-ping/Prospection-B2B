@@ -5,7 +5,7 @@
 ---
 
 ## 📌 Présentation du Projet
-Ce projet implémente un workflow d'automatisation complet sous **n8n** conçu pour optimiser la prospection commerciale de **DV GROUP** dans les secteurs de l'industrie, de la maintenance, de l'automatisme et de l'ingénierie. 
+Ce projet implémente un workflow d'automatisation complet sous **n8n** conçu pour optimiser la prospection commerciale dans les secteurs de l'industrie, de la maintenance, de l'automatisme et de l'ingénierie. 
 
 Il permet d'identifier de manière autonome des signaux d'investissement et de modernisation d'usines en France, de filtrer les faux positifs, d'enregistrer les opportunités dans un CRM (Google Sheets) sans doublon, et de déclencher des alertes ciblées avec des brouillons d'e-mails rédigés par l'IA.
 
